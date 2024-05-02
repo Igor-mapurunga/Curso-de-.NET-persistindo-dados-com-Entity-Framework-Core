@@ -4,9 +4,18 @@ using ScreenSound.Modelos;
 
 try
 {
-    var artistaDAL = new ArtistaDAL();
-    var listaArtistas = artistaDAL.Listar();
+    var context = new ScreenSoundContext();
+    var artistaDAL = new ArtistaDAL(context);
 
+
+    var novoArtista = new Artista("Caetano Veloso", "Caetano Emanuel Viana Teles Veloso OMC é um cantor, músico, produtor, arranjador e escritor brasileiro. Com uma carreira que ultrapassa cinco décadas, Caetano construiu uma obra musical marcada pela releitura e renovaçãoaaa.")
+    { Id = 3003};
+
+
+    // artistaDAL.Atualizar(novoArtista);
+    artistaDAL.Deletar(novoArtista);
+
+    var listaArtistas = artistaDAL.Listar();
     foreach (var artista in listaArtistas)
     {
         Console.WriteLine(artista);
